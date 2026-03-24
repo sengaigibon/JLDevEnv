@@ -1,10 +1,20 @@
 # Read the documentation: https://fosrestbundle.readthedocs.io/en/3.x/
 fos_rest:
-#    param_fetcher_listener:  true
-#    allowed_methods_listener:  true
+    # Injects the validated ParamFetcherInterface into controller actions
+    param_fetcher_listener: true
+
+    # Decodes JSON/XML request bodies and merges them into $request->request,
+    # so ParamFetcher can read JSON-body fields just like form POST fields
+    body_listener: true
+
+    # Keep Symfony's own attribute routing loader in charge
     routing_loader: false
-#    view:
-#        view_response_listener:  true
+
+    view:
+        # Lets controllers return a View object directly; the listener renders it
+        view_response_listener: true
+
+#    allowed_methods_listener:  true
 #    exception:
 #        codes:
 #            App\Exception\MyException: 403
